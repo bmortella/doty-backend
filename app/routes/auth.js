@@ -29,7 +29,7 @@ const {
 router.get(
   "/token",
   requireAuth,
-  roleAuthorization(["user", "admin"]),
+  roleAuthorization(["guardian", "adopter"]),
   trimRequest.all,
   getRefreshToken
 );

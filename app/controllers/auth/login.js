@@ -15,18 +15,21 @@ const { checkPassword } = require("../../middleware/auth");
 const login = async (req, res) => {
   try {
     const data = matchedData(req);
-    const user = await findUser(data.email);
+    const user = await findUser(data.email, data.role);
     const isPasswordMatch = await checkPassword(data.password, user);
     if (!isPasswordMatch) {
       handleError(res, await passwordsDoNotMatch(user));
     } else {
       // all ok, return token
+
       const userInfo = await setUserInfo(user);
 
       res.status(200).json({
         token: generateToken(user._id),
         user: userInfo,
       });
+
+      console.log("OK");
     }
   } catch (error) {
     handleError(res, error);

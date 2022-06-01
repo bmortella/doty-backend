@@ -23,6 +23,14 @@ const validateLogin = [
       min: 5,
     })
     .withMessage("PASSWORD_TOO_SHORT_MIN_5"),
+  check("role")
+    .exists()
+    .withMessage("MISSING")
+    .not()
+    .isEmpty()
+    .withMessage("IS_EMPTY")
+    .isIn(["guardian", "adopter"])
+    .withMessage("ROLE_IS_NOT_VALID"),
   (req, res, next) => {
     validateResult(req, res, next);
   },

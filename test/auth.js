@@ -16,16 +16,17 @@ const loginDetails = {
 };
 const signUpDetails = {
   name: "Beatriz",
-  email: "beatriz@gmail.com",
+  email: "beatriz@test.com",
   phone: "11999999999",
   password: "12345678",
-  role: "guardian",
+  role: "adopter",
 };
 let token = "";
 const createdID = [];
 const badLoginDetails = {
-  email: "admin@admin.com",
+  email: "caozinho@ong.com",
   password: "12345678",
+  role: "guardian",
 };
 
 chai.use(chaiHttp);
