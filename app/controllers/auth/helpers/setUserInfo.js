@@ -8,18 +8,11 @@ const setUserInfo = (req = {}) => {
       _id: req._id,
       name: req.name,
       email: req.email,
+      phone: req.phone,
       role: req.role,
-      verified: req.verified
-    }
-    // Adds verification for testing purposes
-    if (process.env.NODE_ENV !== 'production') {
-      user = {
-        ...user,
-        verification: req.verification
-      }
-    }
-    resolve(user)
-  })
-}
+    };
+    resolve(user);
+  });
+};
 
-module.exports = { setUserInfo }
+module.exports = { setUserInfo };

@@ -10,10 +10,14 @@ const trimRequest = require("trim-request");
 const {
   getRefreshToken,
   login,
+  register,
   roleAuthorization,
 } = require("../controllers/auth");
 
-const { validateLogin } = require("../controllers/auth/validators");
+const {
+  validateLogin,
+  validateRegister,
+} = require("../controllers/auth/validators");
 
 /*
  * Auth routes
@@ -29,6 +33,11 @@ router.get(
   trimRequest.all,
   getRefreshToken
 );
+
+/*
+ * Signup route
+ */
+router.post("/signup", trimRequest.all, validateRegister, register);
 
 /*
  * Login route

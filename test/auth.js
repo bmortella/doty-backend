@@ -10,8 +10,16 @@ const server = require("../server");
 // eslint-disable-next-line no-unused-vars
 const should = chai.should();
 const loginDetails = {
-  email: "admin@admin.com",
+  email: "caozinho@ong.com",
   password: "12345",
+  role: "guardian",
+};
+const signUpDetails = {
+  name: "Beatriz",
+  email: "beatriz@gmail.com",
+  phone: "11999999999",
+  password: "12345678",
+  role: "guardian",
 };
 let token = "";
 const createdID = [];
@@ -91,6 +99,23 @@ describe("*********** AUTH ***********", () => {
         });
     });
   });
+
+  describe("/POST signup", () => {
+    it("it should register user", (done) => {
+      chai
+        .request(server)
+        .post("/signup")
+        .send(signUpDetails)
+        .end((err, res) => {
+          res.should.have.status(201);
+          res.body.should.be.a("object");
+          res.body.should.have.property("token");
+          res.body.should.have.property("user");
+          done();
+        });
+    });
+  });
+
   after(() => {
     createdID.forEach((id) => {
       User.findByIdAndRemove(id, (err) => {

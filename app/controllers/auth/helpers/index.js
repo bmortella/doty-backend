@@ -7,6 +7,7 @@ const { passwordsDoNotMatch } = require("./passwordsDoNotMatch");
 const { returnRegisterToken } = require("./returnRegisterToken");
 const { setUserInfo } = require("./setUserInfo");
 const { updatePassword } = require("./updatePassword");
+const { registerUser } = require("./registerUser");
 
 module.exports = {
   checkPermissions,
@@ -18,4 +19,5 @@ module.exports = {
   returnRegisterToken,
   setUserInfo,
   updatePassword,
+  registerUser,
 };
