@@ -16,8 +16,9 @@ const loginDetails = {
   role: "guardian",
 };
 let token = "";
+let pet = "";
 
-describe("*********** CITIES ***********", () => {
+describe("*********** PETS ***********", () => {
   describe("/POST login", () => {
     it("it should GET token", (done) => {
       chai
@@ -58,6 +59,22 @@ describe("*********** CITIES ***********", () => {
             "age",
             "guardian"
           );
+          pet = res.body._id;
+          done();
+        });
+    });
+  });
+
+  describe("/DELETE pet", () => {
+    it("it should DELETE a pet", (done) => {
+      chai
+        .request(server)
+        .delete(`/pets/${pet}`)
+        .set("Authorization", `Bearer ${token}`)
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.a("object");
+          res.body.should.have.property("msg").eql("DELETED");
           done();
         });
     });

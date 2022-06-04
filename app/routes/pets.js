@@ -9,8 +9,11 @@ const trimRequest = require("trim-request");
 
 const { roleAuthorization } = require("../controllers/auth");
 
-const { validateCreatePet } = require("../controllers/pets/validators");
-const { createPet } = require("../controllers/pets");
+const {
+  validateCreatePet,
+  validateDeletePet,
+} = require("../controllers/pets/validators");
+const { createPet, deletePet } = require("../controllers/pets");
 
 /*
  * Create new pet
@@ -22,6 +25,18 @@ router.post(
   trimRequest.all,
   validateCreatePet,
   createPet
+);
+
+/*
+ * Delete pet
+ */
+router.delete(
+  "/:id",
+  requireAuth,
+  roleAuthorization(["guardian"]),
+  trimRequest.all,
+  validateDeletePet,
+  deletePet
 );
 
 module.exports = router;

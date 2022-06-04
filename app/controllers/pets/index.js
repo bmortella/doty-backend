@@ -1,3 +1,4 @@
 const { createPet } = require("./createPet");
+const { deletePet } = require("./deletePet");
 
-module.exports = { createPet };
+module.exports = { createPet, deletePet };
