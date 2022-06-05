@@ -13,6 +13,7 @@ const validateRegister = [
     .withMessage("IS_EMPTY")
     .isLength({
       min: 2,
+      max: 32,
     })
     .withMessage("NAME_TOO_SHORT"),
   check("email")
