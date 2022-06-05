@@ -8,7 +8,7 @@ module.exports = [
     email: "caozinho@ong.com",
     password: "$2a$05$2KOSBnbb0r.0TmMrvefbluTOB735rF/KRZb4pmda4PdvU9iDvUB26",
     role: "guardian",
-    phone: "12345678",
+    phone: "1112345678",
     avatar: "",
   },
   {
@@ -16,7 +16,7 @@ module.exports = [
     name: "Bruna Silva",
     email: "user@user.com",
     password: "$2a$05$2KOSBnbb0r.0TmMrvefbluTOB735rF/KRZb4pmda4PdvU9iDvUB26",
-    phone: "12345678",
+    phone: "1212345678",
     role: "adopter",
   },
 ];
