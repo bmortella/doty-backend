@@ -13,8 +13,14 @@ const {
   validateCreatePet,
   validateDeletePet,
   validateGetPets,
+  validateEditPet,
 } = require("../controllers/pets/validators");
-const { createPet, deletePet, getPets } = require("../controllers/pets");
+const {
+  createPet,
+  deletePet,
+  getPets,
+  editPet,
+} = require("../controllers/pets");
 
 /*
  * Create new pet
@@ -26,6 +32,18 @@ router.post(
   trimRequest.all,
   validateCreatePet,
   createPet
+);
+
+/*
+ * Edit pet
+ */
+router.put(
+  "/",
+  requireAuth,
+  roleAuthorization(["guardian"]),
+  trimRequest.all,
+  validateEditPet,
+  editPet
 );
 
 /*
