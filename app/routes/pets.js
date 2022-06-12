@@ -12,8 +12,9 @@ const { roleAuthorization } = require("../controllers/auth");
 const {
   validateCreatePet,
   validateDeletePet,
+  validateGetPets,
 } = require("../controllers/pets/validators");
-const { createPet, deletePet } = require("../controllers/pets");
+const { createPet, deletePet, getPets } = require("../controllers/pets");
 
 /*
  * Create new pet
@@ -26,6 +27,11 @@ router.post(
   validateCreatePet,
   createPet
 );
+
+/*
+ * Get pets
+ */
+router.get("/:guardianId", trimRequest.all, validateGetPets, getPets);
 
 /*
  * Delete pet
