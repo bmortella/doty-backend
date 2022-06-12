@@ -112,8 +112,54 @@ describe("*********** AUTH ***********", () => {
           res.body.should.be.a("object");
           res.body.should.have.property("token");
           res.body.should.have.property("user");
+          token = res.body.token;
           done();
         });
+    });
+  });
+
+  describe("*********** PROFILE ***********", () => {
+    describe("/PUT profile", () => {
+      it("it should update user", (done) => {
+        chai
+          .request(server)
+          .put("/profile")
+          .set("Authorization", `Bearer ${token}`)
+          .send({
+            name: "Amanda",
+            email: "amanda@test.com",
+            phone: "11999999999",
+          })
+          .end((err, res) => {
+            res.should.have.status(200);
+            res.body.should.be.a("object");
+            res.body.should.have.property("user").that.has.property("name");
+            res.body.should.have.property("user").that.has.property("email");
+            res.body.should.have.property("user").that.has.property("phone");
+            done();
+          });
+      });
+
+      it("it should NOT update user (email already exists)", (done) => {
+        chai
+          .request(server)
+          .put("/profile")
+          .set("Authorization", `Bearer ${token}`)
+          .send({
+            name: "Amanda",
+            email: "user@user.com",
+            phone: "11999999999",
+          })
+          .end((err, res) => {
+            res.should.have.status(422);
+            res.body.should.be.a("object");
+            res.body.should.have.property("errors").that.has.property("msg");
+            res.body.errors.should.have
+              .property("msg")
+              .eql("USER_ALREADY_EXISTS");
+            done();
+          });
+      });
     });
   });
 

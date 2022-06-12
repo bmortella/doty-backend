@@ -12,11 +12,13 @@ const {
   login,
   register,
   roleAuthorization,
+  updateProfile,
 } = require("../controllers/auth");
 
 const {
   validateLogin,
   validateRegister,
+  validateUpdateProfile,
 } = require("../controllers/auth/validators");
 
 /*
@@ -43,5 +45,16 @@ router.post("/signup", trimRequest.all, validateRegister, register);
  * Login route
  */
 router.post("/login", trimRequest.all, validateLogin, login);
+
+/*
+ * Edit profile route
+ */
+router.put(
+  "/profile",
+  requireAuth,
+  trimRequest.all,
+  validateUpdateProfile,
+  updateProfile
+);
 
 module.exports = router;

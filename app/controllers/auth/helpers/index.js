@@ -8,6 +8,7 @@ const { returnRegisterToken } = require("./returnRegisterToken");
 const { setUserInfo } = require("./setUserInfo");
 const { updatePassword } = require("./updatePassword");
 const { registerUser } = require("./registerUser");
+const { updateUser } = require("./updateUser");
 
 module.exports = {
   checkPermissions,
@@ -20,4 +21,5 @@ module.exports = {
   setUserInfo,
   updatePassword,
   registerUser,
+  updateUser,
 };
