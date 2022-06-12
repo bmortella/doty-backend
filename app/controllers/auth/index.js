@@ -3,6 +3,7 @@ const { login } = require("./login");
 const { register } = require("./register");
 const { roleAuthorization } = require("./roleAuthorization");
 const { updateProfile } = require("./updateProfile");
+const { changePassword } = require("./changePassword");
 
 module.exports = {
   getRefreshToken,
@@ -10,4 +11,5 @@ module.exports = {
   roleAuthorization,
   register,
   updateProfile,
+  changePassword,
 };

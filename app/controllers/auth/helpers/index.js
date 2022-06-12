@@ -9,6 +9,7 @@ const { setUserInfo } = require("./setUserInfo");
 const { updatePassword } = require("./updatePassword");
 const { registerUser } = require("./registerUser");
 const { updateUser } = require("./updateUser");
+const { changePasswordInDB } = require("./changePasswordInDB");
 
 module.exports = {
   checkPermissions,
@@ -22,4 +23,5 @@ module.exports = {
   updatePassword,
   registerUser,
   updateUser,
+  changePasswordInDB,
 };
