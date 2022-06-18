@@ -10,6 +10,7 @@ const { updatePassword } = require("./updatePassword");
 const { registerUser } = require("./registerUser");
 const { updateUser } = require("./updateUser");
 const { changePasswordInDB } = require("./changePasswordInDB");
+const { registerAdoptionProcess } = require("./registerAdoptionProcess");
 
 module.exports = {
   checkPermissions,
@@ -24,4 +25,5 @@ module.exports = {
   registerUser,
   updateUser,
   changePasswordInDB,
+  registerAdoptionProcess,
 };

@@ -1,8 +1,7 @@
 const { matchedData } = require("express-validator");
-
 const { handleError } = require("../../middleware/utils");
 const { userExists } = require("../../middleware/auth/userExists");
-const { setUserInfo, generateToken, registerUser } = require("./helpers");
+const { setUserInfo, generateToken, registerUser, registerAdoptionProcess } = require("./helpers");
 
 const register = async (req, res) => {
   try {
@@ -12,9 +11,11 @@ const register = async (req, res) => {
     if (!doesUserExists) {
       const item = await registerUser(req);
       const userInfo = await setUserInfo(item);
+      const adoptionProcess = await registerAdoptionProcess(req);
       const data = {
         token: generateToken(userInfo._id),
         user: userInfo,
+        adoptionProcess: adoptionProcess,
       };
       res.status(201).json(data);
     }

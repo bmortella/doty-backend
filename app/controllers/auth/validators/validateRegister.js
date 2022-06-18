@@ -50,6 +50,12 @@ const validateRegister = [
     .withMessage("IS_EMPTY")
     .isIn(["guardian", "adopter"])
     .withMessage("ROLE_IS_NOT_VALID"),
+  check("adoptionForm")
+    .exists()
+    .withMessage("MISSING")
+    .not()
+    .isEmpty()
+    .withMessage("IS_EMPTY"),
   (req, res, next) => {
     validateResult(req, res, next);
   },
