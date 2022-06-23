@@ -20,6 +20,13 @@ const signUpDetails = {
   phone: "11999999999",
   password: "12345678",
   role: "adopter",
+  adoptionForm: {
+    petId: "629b910d6c99dbc6c800ead5",
+    address: "Av. Test 123",
+    everHadAPet: "Sim, uma calopsita.",
+    houseType: "Apartamento",
+    petAccess: "Casa toda",
+  },
 };
 let token = "";
 const createdID = [];

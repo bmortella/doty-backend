@@ -21,7 +21,7 @@ const register = async (req, res) => {
         user: userInfo,
       };
       if (req.role === "adopter") {
-        data.adoptionProcess = await registerAdoptionProcess(req);
+        data.adoptionProcess = await registerAdoptionProcess(req, userInfo._id);
       }
       res.status(201).json(data);
     }

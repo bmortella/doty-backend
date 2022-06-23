@@ -1,6 +1,7 @@
 const { matchedData } = require("express-validator");
 const { handleError } = require("../../middleware/utils");
-const { petExists } = require("./helpers");
+
+const { petExists } = require("./helpers/petExists");
 
 const Pet = require("../../models/pet");
 const { createItem } = require("../../middleware/db");
