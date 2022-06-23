@@ -1,33 +1,25 @@
 const mongoose = require("mongoose");
-const validator = require("validator");
-const mongoosePaginate = require("mongoose-paginate-v2");
 
 const adoptionProcessSchema = new mongoose.Schema(
   {
-    address: {
-      type: String,
-      required: true,
-    },
-    everHadAPet: {
-      type: String,
-      required: true,
-    },
-    houseType: {
-      type: String,
-      required: true,
-    },
-    petAccess: {
-      type: String,
-      required: true,
-    },
     petId: {
       type: mongoose.Types.ObjectId,
       ref: "Pet",
-      require: true,
+      required: true,
     },
-    timeSpentAtHome: {
-      type: String,
-      require: true,
+    guardianId: {
+      type: mongoose.Types.ObjectId,
+      ref: "Guardian",
+      required: true,
+    },
+    adopterId: {
+      type: mongoose.Types.ObjectId,
+      ref: "Adopter",
+      required: true,
+    },
+    process: {
+      type: Object,
+      default: {},
     },
   },
   {
