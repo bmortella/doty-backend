@@ -4,4 +4,10 @@ const {
 
 const { validateGetAdopterForm } = require("./validateGetAdopterForm");
 
-module.exports = { validateGetAdoptionProcesses, validateGetAdopterForm };
+const { validateUpdateProcesses } = require("./validateUpdateProcesses");
+
+module.exports = {
+  validateGetAdoptionProcesses,
+  validateGetAdopterForm,
+  validateUpdateProcesses,
+};

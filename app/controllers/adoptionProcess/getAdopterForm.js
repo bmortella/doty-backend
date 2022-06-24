@@ -12,12 +12,15 @@ const getAdopterForm = async (req, res) => {
   try {
     req = matchedData(req);
     const id = await isIDGood(req.id);
-    AdoptionProcess.findOne({ adopter: id }, (err, item) => {
-      if (err) {
-        return reject(buildErrObject(422, err.message));
-      }
-      res.status(200).json(item);
-    });
+    AdoptionProcess.findOne({ adopter: id })
+      .populate("pet")
+      .populate("adopter")
+      .exec((err, item) => {
+        if (err) {
+          return reject(buildErrObject(422, err.message));
+        }
+        res.status(200).json(item);
+      });
   } catch (error) {
     handleError(res, error);
   }
