@@ -9,7 +9,9 @@ const trimRequest = require("trim-request");
 const { roleAuthorization } = require("../controllers/auth");
 
 const { getAdoptionProcesses } = require("../controllers/adoptionProcess");
+const { getAdopterForm } = require("../controllers/adoptionProcess/getAdopterForm");
 
+const {validateGetAdopterForm} = require("../controllers/adoptionProcess/validators")
 const {
   validateGetAdoptionProcesses,
 } = require("../controllers/adoptionProcess/validators");
@@ -24,6 +26,13 @@ router.get(
   trimRequest.all,
   validateGetAdoptionProcesses,
   getAdoptionProcesses
+);
+
+router.get(
+  "/process/:id",
+  trimRequest.all,
+  validateGetAdopterForm,
+  getAdopterForm
 );
 
 module.exports = router;
