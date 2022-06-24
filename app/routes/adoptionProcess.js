@@ -12,17 +12,15 @@ const { getAdoptionProcesses } = require("../controllers/adoptionProcess");
 const {
   getAdopterForm,
 } = require("../controllers/adoptionProcess/getAdopterForm");
-const { updateProcesses } = require("../controllers/adoptionProcess");
 
 const {
-  validateGetAdopterForm,
-} = require("../controllers/adoptionProcess/validators");
+  updateProcess,
+} = require("../controllers/adoptionProcess/updateProcess");
+
 const {
   validateGetAdoptionProcesses,
-} = require("../controllers/adoptionProcess/validators");
-
-const {
-  validateUpdateProcesses,
+  validateGetAdopterForm,
+  validateUpdateProcess,
 } = require("../controllers/adoptionProcess/validators");
 
 /*
@@ -44,11 +42,12 @@ router.get(
   getAdopterForm
 );
 
-router.post(
-  "/process",
+router.put(
+  "/",
+  requireAuth,
   trimRequest.all,
-  validateUpdateProcesses,
-  updateProcesses
+  validateUpdateProcess,
+  updateProcess
 );
 
 module.exports = router;

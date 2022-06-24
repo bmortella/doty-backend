@@ -1,5 +1,5 @@
 const { getAdoptionProcesses } = require("./getAdoptionProcesses");
 const { getAdopterForm } = require("./getAdopterForm");
-const { updateProcesses } = require("./updateProcesses");
+const { updateProcess } = require("./updateProcess");
 
-module.exports = { getAdoptionProcesses, getAdopterForm, updateProcesses };
+module.exports = { getAdoptionProcesses, getAdopterForm, updateProcess };
