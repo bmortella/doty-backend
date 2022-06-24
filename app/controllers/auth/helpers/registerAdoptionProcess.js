@@ -11,9 +11,9 @@ const registerAdoptionProcess = async (req = {}, userId) => {
   const pet = await getItem(req.adoptionForm.petId, Pet);
   return new Promise((resolve, reject) => {
     const adoptionProcess = new AdoptionProcess({
-      adopterId: userId,
+      adopter: userId,
       guardianId: pet.guardian,
-      petId: req.adoptionForm.petId,
+      pet: req.adoptionForm.petId,
       process: {
         0: {
           address: req.adoptionForm.address,

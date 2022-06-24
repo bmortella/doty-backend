@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const adoptionProcessSchema = new mongoose.Schema(
   {
-    petId: {
+    pet: {
       type: mongoose.Types.ObjectId,
       ref: "Pet",
       required: true,
@@ -12,7 +12,7 @@ const adoptionProcessSchema = new mongoose.Schema(
       ref: "Guardian",
       required: true,
     },
-    adopterId: {
+    adopter: {
       type: mongoose.Types.ObjectId,
       ref: "Adopter",
       required: true,
@@ -20,6 +20,18 @@ const adoptionProcessSchema = new mongoose.Schema(
     process: {
       type: Object,
       default: {},
+    },
+    stage: {
+      type: Number,
+      default: 0,
+    },
+    status: {
+      type: String,
+      default: "PENDING",
+    },
+    started: {
+      type: Date,
+      default: Date.now,
     },
   },
   {
