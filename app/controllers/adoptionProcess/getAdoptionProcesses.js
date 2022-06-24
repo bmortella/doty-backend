@@ -12,7 +12,7 @@ const getAdoptionProcesses = async (req, res) => {
       .populate("pet")
       .exec((err, items) => {
         if (err) {
-          return reject(buildErrObject(422, err.message));
+          return handleError(res, buildErrObject(422, err.message));
         }
         res.status(200).json(items);
       });

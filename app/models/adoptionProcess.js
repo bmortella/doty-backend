@@ -14,7 +14,7 @@ const adoptionProcessSchema = new mongoose.Schema(
     },
     adopter: {
       type: mongoose.Types.ObjectId,
-      ref: "Adopter",
+      ref: "User",
       required: true,
     },
     process: {
