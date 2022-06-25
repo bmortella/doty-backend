@@ -8,7 +8,7 @@
     "url": "https://github.com/bmortella/doty-backend"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=production pm2 start server.js",
+    "start": "pm2 start server.js",
     "test": "cross-env NODE_ENV=test npm run fresh && mocha --exit",
     "dev": "cross-env NODE_ENV=development nodemon --inspect=9230 server.js",
     "fresh": "npm run clean && npm run seed",
